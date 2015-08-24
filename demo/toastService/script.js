@@ -32,12 +32,16 @@
     var myController = function ($log, toastSvc) {
         var
             vm = this,
+            times = [],
             closeToast = function (toast) {
                 toast.close();                
                 // Perform whatever other processing we need to on the resolves..
                 $log.log('Return data: ' + vm.sharedData.time);
+                vm.times.push(vm.sharedData.time);
+                
             };
-
+            
+        vm.times = [];
         vm.sharedData = {
             time: new Date().getTime()
         };
